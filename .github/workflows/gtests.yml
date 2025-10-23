@@ -41,8 +41,15 @@ jobs:
             cd build &&
             cmake .. &&
             make &&
-            ./tests
+            ./tests --gtest_output=xml:gtest_results.xml
           "
+
+      - name: Upload result tests
+        uses: mikepenz/action-junit-report@v4
+        if: always()
+        with:
+          report_paths: 'build/gtest_results.xml'
+          check_name: "GTEST result tests"
 
       - name: Delete Image
         run: |
