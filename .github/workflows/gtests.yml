@@ -39,6 +39,7 @@ jobs:
             cmake .. &&
             make &&
             ./tests
+          "
 
       - name: Delete Image
         run: |
